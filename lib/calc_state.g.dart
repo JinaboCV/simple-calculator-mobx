@@ -77,6 +77,28 @@ mixin _$CalcState on _CalcState, Store {
   }
 
   @override
+  void resultFromUserInput() {
+    final _$actionInfo = _$_CalcStateActionController.startAction(
+        name: '_CalcState.resultFromUserInput');
+    try {
+      return super.resultFromUserInput();
+    } finally {
+      _$_CalcStateActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void clearResult() {
+    final _$actionInfo = _$_CalcStateActionController.startAction(
+        name: '_CalcState.clearResult');
+    try {
+      return super.clearResult();
+    } finally {
+      _$_CalcStateActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   String toString() {
     return '''
 userInput: ${userInput},

@@ -33,7 +33,7 @@ var calcGrid = [
   ),
   ButtonDigit.blue(
     label: "x",
-    onTap: () => calculator.addUserInput("x"),
+    onTap: () => calculator.addUserInput("*"),
   ),
   ButtonDigit.grey(
     label: "4",
@@ -81,6 +81,6 @@ var calcGrid = [
   ),
   ButtonDigit.blue(
     label: "=",
-    onTap: () => null,
+    onTap: () => calculator.resultFromUserInput(),
   ),
 ];

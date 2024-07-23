@@ -1,3 +1,4 @@
+import 'package:math_expressions/math_expressions.dart';
 import 'package:mobx/mobx.dart';
 
 part 'calc_state.g.dart';
@@ -5,11 +6,13 @@ part 'calc_state.g.dart';
 class CalcState = _CalcState with _$CalcState;
 
 abstract class _CalcState with Store {
+  Parser parser = Parser();
+  ContextModel cntxt = ContextModel();
   @observable
   String userInput = '';
 
   @observable
-  String result = '';
+  String result = '0';
 
   @action
   void clean() {
@@ -26,6 +29,12 @@ abstract class _CalcState with Store {
     this.userInput += inputChar;
   }
 
+  @action
+  void resultFromUserInput() {
+    Expression expression = parser.parse(this.userInput);
+    result = expression.evaluate(EvaluationType.REAL, cntxt).toString();
+  }
+
   /*
 
   @action
@@ -33,10 +42,9 @@ abstract class _CalcState with Store {
     this.result = this.userInput;
     this.clean();
   }
-
+  */
   @action
   void clearResult() {
     this.result = '';
   }
-  */
 }
