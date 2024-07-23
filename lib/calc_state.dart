@@ -26,6 +26,8 @@ abstract class _CalcState with Store {
     this.userInput += inputChar;
   }
 
+  /*
+
   @action
   void calculate() {
     this.result = this.userInput;
@@ -36,4 +38,5 @@ abstract class _CalcState with Store {
   void clearResult() {
     this.result = '';
   }
+  */
 }

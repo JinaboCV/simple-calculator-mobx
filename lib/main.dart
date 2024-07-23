@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:test_app/button.dart';
 import 'package:test_app/global.dart';
-
 import 'gridgenerator.dart';
 
 void main() {
@@ -39,21 +37,30 @@ class MyHomePage extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           Expanded(
-              child: Container(
-                  child: Column(
-            children: [
-              Container(
-                padding: const EdgeInsets.all(20),
-                alignment: Alignment.centerLeft,
-                child: Text(calculator.userInput),
-              ),
-              Container(
-                padding: const EdgeInsets.all(20),
-                alignment: Alignment.centerRight,
-                child: Text(calculator.result),
-              ),
-            ],
-          ))),
+              child: Observer(
+            builder: (context) => Container(
+                child: Column(
+              children: [
+                Container(
+                  padding: const EdgeInsets.all(20),
+                  margin: const EdgeInsets.only(top: 10),
+                  alignment: Alignment.centerLeft,
+                  child: Text(
+                    calculator.userInput,
+                    style: TextStyle(fontSize: 20),
+                  ),
+                ),
+                Container(
+                  padding: const EdgeInsets.all(20),
+                  alignment: Alignment.centerRight,
+                  child: Text(
+                    calculator.result,
+                    style: TextStyle(fontSize: 25),
+                  ),
+                ),
+              ],
+            )),
+          )),
           Expanded(
               flex: 2,
               child: GridView.builder(

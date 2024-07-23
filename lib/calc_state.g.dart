@@ -77,28 +77,6 @@ mixin _$CalcState on _CalcState, Store {
   }
 
   @override
-  void calculate() {
-    final _$actionInfo =
-        _$_CalcStateActionController.startAction(name: '_CalcState.calculate');
-    try {
-      return super.calculate();
-    } finally {
-      _$_CalcStateActionController.endAction(_$actionInfo);
-    }
-  }
-
-  @override
-  void clearResult() {
-    final _$actionInfo = _$_CalcStateActionController.startAction(
-        name: '_CalcState.clearResult');
-    try {
-      return super.clearResult();
-    } finally {
-      _$_CalcStateActionController.endAction(_$actionInfo);
-    }
-  }
-
-  @override
   String toString() {
     return '''
 userInput: ${userInput},
