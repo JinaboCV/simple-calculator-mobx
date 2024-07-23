@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:test_app/button.dart';
+import 'package:test_app/global.dart';
 
 import 'gridgenerator.dart';
 
@@ -19,14 +20,13 @@ class _MyAppState extends State<MyApp> {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home:  MyHomePage(),
+      home: MyHomePage(),
     );
   }
 }
@@ -40,18 +40,28 @@ class MyHomePage extends StatelessWidget {
         children: <Widget>[
           Expanded(
               child: Container(
-            child: Center(
-              child: Text("Formula"),
-            ),
-          )),
+                  child: Column(
+            children: [
+              Container(
+                padding: const EdgeInsets.all(20),
+                alignment: Alignment.centerLeft,
+                child: Text(calculator.userInput),
+              ),
+              Container(
+                padding: const EdgeInsets.all(20),
+                alignment: Alignment.centerRight,
+                child: Text(calculator.result),
+              ),
+            ],
+          ))),
           Expanded(
               flex: 2,
               child: GridView.builder(
-                itemCount: calcGrid.length,
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 4),
-                itemBuilder: (BuildContext context, int index) => calcGrid[index]
-              )),
+                  itemCount: calcGrid.length,
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 4),
+                  itemBuilder: (BuildContext context, int index) =>
+                      calcGrid[index])),
         ],
       ),
     );
