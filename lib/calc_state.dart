@@ -16,22 +16,30 @@ abstract class _CalcState with Store {
 
   @action
   void clean() {
-    this.userInput = '';
+    userInput = '';
+    result = '0';
   }
 
   @action
   void delete() {
-    this.userInput = this.userInput.substring(0, this.userInput.length - 1);
+    userInput = userInput.substring(0, userInput.length - 1);
   }
 
   @action
   void addUserInput(String inputChar) {
-    this.userInput += inputChar;
+    if (userInput.isEmpty && inputChar == '-') userInput = '0';
+    if (userInput.isEmpty && inputChar == '+') userInput = '0';
+    if (userInput.isEmpty && inputChar == '÷') userInput = '0';
+    if (userInput.isEmpty && inputChar == '%') return;
+    if (userInput.isEmpty && inputChar == '×') return;
+    if (userInput.isEmpty && inputChar == '0') return;
+    if (userInput.isEmpty && inputChar == '.') userInput = '0';
+    userInput += inputChar;
   }
 
   @action
   void resultFromUserInput() {
-    Expression expression = parser.parse(this.userInput);
+    Expression expression = parser.parse(userInput);
     result = expression.evaluate(EvaluationType.REAL, cntxt).toString();
   }
 
@@ -45,6 +53,6 @@ abstract class _CalcState with Store {
   */
   @action
   void clearResult() {
-    this.result = '';
+    result = '';
   }
 }
